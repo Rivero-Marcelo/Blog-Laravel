@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post;
 use Illuminate\Http\Request;
+use App\Models\User;
 
-class PostController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $posts = Post::all();
-        return view('home', ['posts' => $posts]);
+        //
     }
 
     /**
@@ -36,23 +35,22 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
 
-        $request -> validate([
+            'name' => 'required|string|max:50',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string|min:8'
+        ]);
+        
 
-            'titulo' => 'required',
-            'cuerpo' => 'required',
+        $user = User::create([
 
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => bcrypt($request->password)
         ]);
 
-        $post = Post::create([
-            'titulo' => $request->titulo,
-            'cuerpo' => $request->cuerpo,
-            'user_id' => $request->user_id
-
-        ]);
-
-        return $post;
-
+        return $user;
     }
 
     /**

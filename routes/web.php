@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +18,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('home', [PostController::class, 'index'])->name('home');
+Route::post('home', [LoginController::class, 'autenticar'])->name('autenticar');
+
+Route::get('logout', [LoginController::class, 'logout']);
+
+// Route::resource('post', PostController::class);
+
+//Route::get('prueba', function(){
+
+//return view('/prueba', ['record' => null]);
+
+
+//});
