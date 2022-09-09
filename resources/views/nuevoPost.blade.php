@@ -27,11 +27,20 @@
 
 </form>
 
-<br><br>
-<?php if(isset($parametros['error']) && $parametros['error'] === false ) :?>
-        <div style="color: red;">Publicación exitosa.</div>
-    <?php endif;?><br>
-    
+@if(session('success'))
+        <br>
+        <div style="color: red;">{{session('success')}}</div>
+@endif
+        <br>
+
+@if($errors->any())
+<br>
+    @foreach ($errors->all() as $error)
+    <div style="color: red;">{{$error}}</div>
+    @endforeach
+@endif
+ 
+<br>
 <a href={{route('home')}}>Volver</a>
     
 </body>

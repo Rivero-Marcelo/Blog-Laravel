@@ -16,9 +16,10 @@
 
     
 <h1 align="center"> ----- BLOG HOME PAGE ----- </h1>
-<br><br><br><br>
-<h2>PUBLICACIONES</h2>
 <br><br>
+<h2>PUBLICACIONES</h2>
+<b>_______________________________________________</b>
+
 
 @auth
 @yield('posts')

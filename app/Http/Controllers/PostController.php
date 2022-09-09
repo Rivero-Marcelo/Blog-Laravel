@@ -52,7 +52,7 @@ class PostController extends Controller
 
         ]);
 
-        return $post;
+        return back()->withSuccess('Publicación exitosa');
 
     }
 
