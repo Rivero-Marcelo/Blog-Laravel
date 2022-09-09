@@ -24,7 +24,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('nuevoUsuario');
     }
 
     /**
@@ -37,17 +37,19 @@ class UserController extends Controller
     {
         $request->validate([
 
+            'email' => 'bail|required|string|email|unique:users',
+            'password' => 'required|string|min:3',
             'name' => 'required|string|max:50',
-            'email' => 'required|string|email|unique:users',
-            'password' => 'required|string|min:8'
+            'apellido' => 'required|string|max:50',
+              
         ]);
         
 
         $user = User::create([
-
-            'name' => $request->name,
             'email' => $request->email,
-            'password' => bcrypt($request->password)
+            'password' => bcrypt($request->password),
+            'name' => $request->name,
+            'apellido' => $request->apellido,
         ]);
 
         return $user;

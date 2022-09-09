@@ -8,7 +8,6 @@
 </head>
 <body>
 
-
 @guest
 @yield('formulario')    
 @else
@@ -16,16 +15,12 @@
 @endguest
 
     
-
-
 <h1>BLOG HOME PAGE</h1>
 <br><br><br><br>
 <h2>PUBLICACIONES</h2>
 <br><br>
 
-
 @yield('posts')
-
 
 </body>
 </html>

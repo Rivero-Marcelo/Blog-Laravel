@@ -3,6 +3,7 @@
 use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('home', [PostController::class, 'index'])->name('home');
+
 Route::post('home', [LoginController::class, 'autenticar'])->name('autenticar');
 
-Route::get('logout', [LoginController::class, 'logout']);
+Route::get('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+Route::get('usuarios/nuevo', [UserController::class, 'create'])->name('usuarios.create');
+Route::post('usuarios/nuevo', [UserController::class, 'store'])->name('usuarios.store');
 
 // Route::resource('post', PostController::class);
 
