@@ -23,18 +23,13 @@ Route::get('/', function () {
 Route::get('/', [PostController::class, 'index'])->name('home');
 Route::get('home', [PostController::class, 'index'])->name('home');
 
+Route::get('posts/nuevo', [PostController::class, 'create'])->name('posts.create')->middleware('auth');
+Route::post('posts/nuevo', [PostController::class, 'store'])->name('posts.store')->middleware('auth');
+
+
 Route::post('home', [LoginController::class, 'autenticar'])->name('autenticar');
 
 Route::get('logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
 
 Route::get('usuarios/nuevo', [UserController::class, 'create'])->name('usuarios.create');
 Route::post('usuarios/nuevo', [UserController::class, 'store'])->name('usuarios.store');
-
-// Route::resource('post', PostController::class);
-
-//Route::get('prueba', function(){
-
-//return view('/prueba', ['record' => null]);
-
-
-//});

@@ -21,16 +21,16 @@
 <br><br>
 
 
-@if($errors->has('email'))
-    @foreach($errors->get('email') as $message)
-    <div style="color: red;">{{$message}}</div>
+@if($errors->any())
+    @foreach($errors->all() as $message)
+        <div style="color: red;">{{$message}}</div><br>
     @endforeach
 @endif
 
+@if(session('success'))
+<div style="color: red;">{{session('success')}}</div><br>
+@endif
 
-        <div style="color: red;">Usuario creado con exito.</div>
-    
-    
     
     <br>
 <a href={{route('home')}}>Volver</a>

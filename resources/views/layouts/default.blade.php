@@ -8,19 +8,23 @@
 </head>
 <body>
 
-@guest
-@yield('formulario')    
-@else
-@yield('logout')
-@endguest
+
+    @yield('formulario')    
+
+    @yield('logout')
+
 
     
-<h1>BLOG HOME PAGE</h1>
+<h1 align="center"> ----- BLOG HOME PAGE ----- </h1>
 <br><br><br><br>
 <h2>PUBLICACIONES</h2>
 <br><br>
 
+@auth
 @yield('posts')
+@endauth
+
+
 
 </body>
 </html>

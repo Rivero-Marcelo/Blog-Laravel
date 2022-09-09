@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -36,15 +37,12 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-
             'email' => 'bail|required|string|email|unique:users',
             'password' => 'required|string|min:3',
             'name' => 'required|string|max:50',
-            'apellido' => 'required|string|max:50',
-              
+            'apellido' => 'required|string|max:50',        
         ]);
         
-
         $user = User::create([
             'email' => $request->email,
             'password' => bcrypt($request->password),
@@ -52,7 +50,8 @@ class UserController extends Controller
             'apellido' => $request->apellido,
         ]);
 
-        return $user;
+        Auth::login($user);
+        return back()->withSuccess('Usuario creado con éxito');
     }
 
     /**

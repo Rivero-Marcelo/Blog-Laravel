@@ -1,8 +1,8 @@
 @extends('layouts.default')
 
-
-@section('formulario')
-    <div><form  action= {{ route('home') }}    method="post">
+@guest
+    @section('formulario')
+        <div><form  action= {{ route('home') }}    method="post">
         @csrf
         Usuario  <input type="text" name="email"> Contraseña 
         <input type="password" name="password">  
@@ -21,14 +21,16 @@
         <br>
 
         <div><a href={{route('usuarios.create')}}> Registrarse</a></div>    
-    </div>
-@endsection
+        </div>
+    @endsection
+@endguest
 
     @auth
         @section('logout')
         <div>BIENVENIDO: {{auth()->user()->name}}</div> 
         <br><br>
-        <div><a href={{route('logout')}}>Cerrar Sesión</a></div>
+        <div><a href={{route('logout')}}>Cerrar Sesión</a></div><br>
+        <div><a href={{route('posts.create')}}>Nuevo Post</a></div>
         @endsection
     @endauth
 
