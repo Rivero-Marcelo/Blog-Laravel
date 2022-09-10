@@ -17,8 +17,6 @@ class PostController extends Controller
     {
         $posts = Post::with('user')->get();
 
-        //return $posts;
-
         return view('home', ['posts' => $posts]);
     }
 
@@ -71,7 +69,6 @@ class PostController extends Controller
 
         return view('verPost', ['post' => $post]);
         
-        //return $post->user->name;
     }
 
     /**

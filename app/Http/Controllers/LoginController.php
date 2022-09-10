@@ -27,7 +27,7 @@ class LoginController extends Controller
 
 
         return redirect()->back()->with('error_login', 'Las credenciales no son válidas');
-        //return redirect('home')->with('error', 'Las credenciales no son válidas');
+        
     }
 
 
