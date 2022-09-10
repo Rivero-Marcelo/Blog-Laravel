@@ -8,15 +8,13 @@
 </head>
 <body>
     
-<h3><b> AUTOR:</b>  <?= $parametros['nombreAutor'] . " " . $parametros['apellidoAutor'] ?> </h3>
-<h3><b> Fecha de Publicación:</b> <?= $parametros['fechaHora'] ?> </h3>
+<h3><b> AUTOR:</b> {{$post->user->name}} {{$post->user->apellido}}</h3>
+<h3><b> Fecha de Publicación: </b> {{ $post->created_at}}</h3>
 <b>--------------------------------------------------------------------------------</b><br><br>
 
-<b>id Publicacion <?= $parametros['idPublicacion'] ?>:</b><p> <?= $parametros['cuerpo'] ?></p>
-
+<b>id Publicacion: {{$post->id}} </b><b><h3><p>Titulo: {{$post->titulo}} </b></p></h3><p> {{$post->cuerpo}}</p>
 <br><br><br><br>
-<a href="/home">Volver</a>
+<a href={{route('home')}}>Volver</a>
 
 </body>
 </html>
-Footer

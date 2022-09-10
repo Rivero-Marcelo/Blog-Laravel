@@ -26,20 +26,26 @@
 @endguest
 
     @auth
-        @section('logout')
-        <div>BIENVENIDO: {{auth()->user()->name}}</div> 
-        <br><br>
+        @section('logued')
+         <p>  BIENVENIDO: <b>{{auth()->user()->name}} {{auth()->user()->apellido}}</b></p>
         <div><a href={{route('logout')}}>Cerrar Sesión</a></div><br>
-        <div><a href={{route('posts.create')}}>Nuevo Post</a></div>
+        
         @endsection
+
+        @section('menu')
+            <div><a href={{route('posts.create')}}>Nuevo Post</a></div><br>
+        @endsection
+
     @endauth
 
 
     
         @section('posts')
             @foreach ($posts as $post)
-            <p><b>Titulo:</b> {{$post->titulo}} <br> <b>Autor:</b> {{$post->user->name}} {{$post->user->apellido}}</p>
+            <p><b>Titulo:</b> {{$post->titulo}}  
+             <b>Autor:</b> {{$post->user->name}} {{$post->user->apellido}} @auth
+              <a href={{route('posts.show', ['id' => $post->id])}}>Ver Post</a> @endauth </p>
+             ____________________________________________________________
             @endforeach
         @endsection
-    
-
+        

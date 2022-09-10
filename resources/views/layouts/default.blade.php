@@ -11,12 +11,15 @@
 
     @yield('formulario')    
 
-    @yield('logout')
+    @yield('logued')
 
 
     
 <h1 align="center"> ----- BLOG HOME PAGE ----- </h1>
-<br><br>
+
+
+    @yield('menu')
+
 <h2>PUBLICACIONES</h2>
 <b>_______________________________________________</b>
 
