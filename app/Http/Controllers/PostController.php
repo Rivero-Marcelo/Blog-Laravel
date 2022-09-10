@@ -15,7 +15,10 @@ class PostController extends Controller
      */
     public function index(Request $request)
     {
-        $posts = Post::all();
+        $posts = Post::with('user')->get();
+
+        //return $posts;
+
         return view('home', ['posts' => $posts]);
     }
 

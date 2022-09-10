@@ -25,6 +25,7 @@ Route::get('home', [PostController::class, 'index'])->name('home');
 
 Route::get('posts/nuevo', [PostController::class, 'create'])->name('posts.create')->middleware('auth');
 Route::post('posts/nuevo', [PostController::class, 'store'])->name('posts.store')->middleware('auth');
+Route::get('posts/ver/{id}', [PostController::class, 'show'])->name('posts.show')->middleware('auth');
 
 
 Route::post('home', [LoginController::class, 'autenticar'])->name('autenticar');

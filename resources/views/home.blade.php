@@ -34,10 +34,12 @@
         @endsection
     @endauth
 
-    @section('posts')
-        @foreach ($posts as $post)
-            <p>Titulo: {{$post->titulo}}</p>
-        @endforeach
-    @endsection
 
+    
+        @section('posts')
+            @foreach ($posts as $post)
+            <p><b>Titulo:</b> {{$post->titulo}} <br> <b>Autor:</b> {{$post->user->name}} {{$post->user->apellido}}</p>
+            @endforeach
+        @endsection
+    
 
