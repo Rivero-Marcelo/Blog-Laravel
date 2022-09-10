@@ -46,9 +46,10 @@
         <b>_______________________________________________</b>
 
             @foreach ($posts as $post)
+            <p><b>Fecha de Publicación:</b> {{$post->created_at}}</p>
             <p><b>Titulo:</b> {{$post->titulo}}  
              <b>Autor:</b> {{$post->user->name}} {{$post->user->apellido}} @auth
-              <a href={{route('posts.show', ['id' => $post->id])}}>Ver Post</a> @endauth </p>
+              ----------> <a href={{route('posts.show', ['id' => $post->id])}}>Ver Post</a> @endauth </p>
              ____________________________________________________________
             @endforeach
         @endsection
