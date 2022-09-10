@@ -41,6 +41,10 @@
 
     
         @section('posts')
+
+        <h2>PUBLICACIONES</h2>
+        <b>_______________________________________________</b>
+
             @foreach ($posts as $post)
             <p><b>Titulo:</b> {{$post->titulo}}  
              <b>Autor:</b> {{$post->user->name}} {{$post->user->apellido}} @auth
